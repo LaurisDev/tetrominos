@@ -7,6 +7,9 @@ class Tetromino:
         self.rotation = (self.rotation + 1) % 4  # Incrementa en la rotacion
         self.shape = list(map(list, zip(*self.shape[::-1]))) # Rota la matriz cambiando filas por columnas
 
+    def _eq_(self, other):
+        return self.shape == other.shape and self.rotation == other.rotation
+
     def print_tetromino(self):
         for row in self.shape:
             for cell in row:
@@ -80,6 +83,7 @@ tetromino_I.print_tetromino()
 print("I después de tres rotaciones:")
 tetromino_I.rotate()
 tetromino_I.print_tetromino()
+
 
 
 

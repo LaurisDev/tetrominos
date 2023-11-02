@@ -2,7 +2,7 @@ import pytest
 from modulo.modelo.tetrominos import Tetromino
 
 
-@pytest.mark.parametrize("rotation", [1, 2, 3])
+@pytest.mark.parametrize("rotation", [0, 1, 2, 3])
 def test_tetromino_i_rota_correctamente(rotation):
     # Arrange:
     tetromino_i = Tetromino([
@@ -18,6 +18,14 @@ def test_tetromino_i_rota_correctamente(rotation):
 
     # Assert:
     assert tetromino_i.rotation == rotation
+    if rotation % 4 == 0:
+        assert tetromino_i.shape == ([
+            ['.', '.', '@', '.'],
+            ['.', '.', '@', '.'],
+            ['.', '.', '@', '.'],
+            ['.', '.', '@', '.']
+        ])
+
     if rotation % 4 == 1:
         assert tetromino_i.shape == ([
             ['.', '.', '.', '.'],
